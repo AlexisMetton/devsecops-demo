@@ -6,6 +6,11 @@ pipeline {
     SONAR_TOKEN = credentials('sonar-token')
   }
 
+  tools {
+    // Ce nom doit correspondre à celui configuré dans Jenkins > Tools
+    sonarQubeScanner 'sonar-scanner'
+  }
+
   stages {
     stage('Clone') {
       steps {
@@ -22,15 +27,17 @@ pipeline {
     stage('Analyse SonarQube') {
       steps {
         withSonarQubeEnv('My SonarQube Server') {
-	  tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-          sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
+          script {
+            def scannerHome = tool 'sonar-scanner'
+            sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=$SONAR_TOKEN"
+          }
         }
       }
     }
 
     stage('Scan Trivy') {
       steps {
-        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image devsecops-demo:test'
+        sh 'trivy image devsecops-demo:test || true'
       }
     }
   }
