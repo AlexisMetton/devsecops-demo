@@ -17,3 +17,4 @@ Pour écouter sur le port 8080 en externe ; ngrok http 8080
 # relance build Jenkins
 # test permission OK
 # test OK
+# final docker socket fixed
