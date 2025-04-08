@@ -22,6 +22,7 @@ pipeline {
     stage('Analyse SonarQube') {
       steps {
         withSonarQubeEnv('My SonarQube Server') {
+	  tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
           sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
         }
       }

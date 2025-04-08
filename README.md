@@ -18,3 +18,4 @@ Pour écouter sur le port 8080 en externe ; ngrok http 8080
 # test permission OK
 # test OK
 # final docker socket fixed
+# test scanner
