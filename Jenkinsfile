@@ -7,8 +7,7 @@ pipeline {
   }
 
   tools {
-    // Ce nom doit correspondre à celui configuré dans Jenkins > Tools
-    sonarQubeScanner 'sonar-scanner'
+    hudson.plugins.sonar.SonarRunnerInstallation 'sonar-scanner'
   }
 
   stages {
