@@ -14,3 +14,4 @@ Ce dépôt contient une démo simple d’un pipeline Jenkins avec :
 # Test automatique Jenkins
 
 Pour écouter sur le port 8080 en externe ; ngrok http 8080
+# relance build Jenkins
