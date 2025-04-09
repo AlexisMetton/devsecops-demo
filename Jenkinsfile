@@ -6,10 +6,6 @@ pipeline {
     SONAR_TOKEN = credentials('sonar-token')
   }
 
-  tools {
-    sonarQubeScanner 'sonar-scanner'
-  }
-
   stages {
     stage('Clone') {
       steps {
